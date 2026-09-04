@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "MarketMate AI"
+description = "A free AI marketing assistant for small businesses that creates social content, captions, calls to action, hashtags, and keeps saved posts organized."
+version = "1.0.0"
+id = "artifacts/marketmate-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24642
+
+[services.development]
+run = "pnpm --filter @workspace/marketmate-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/marketmate-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/marketmate-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24642"
+BASE_PATH = "/"
