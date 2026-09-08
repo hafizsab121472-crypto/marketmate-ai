@@ -1,3 +1,4 @@
+import { EarningsSection } from '@/components/EarningsSection';
 import { type FormEvent, type ReactNode, useEffect, useMemo, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -486,9 +487,23 @@ function Router() {
     <AppShell>
       <RoutedErrorBoundary>
         <Switch>
-          <Route path="/"><Studio profile={profile} profileSaved={profileSaved} initialDraft={activeDraft} onDraftChange={clearDraft} /></Route>
-          <Route path="/saved"><SavedPage onEdit={editPost} onNewPost={newPost} /></Route>
-          <Route path="/profile"><ProfilePage profile={profile} onSave={saveProfile} /></Route>
+          <Route path="/">
+            <Studio 
+              profile={profile} 
+              profileSaved={profileSaved} 
+              initialDraft={activeDraft} 
+              onDraftChange={clearDraft} 
+            />
+          </Route>
+          <Route path="/earnings">
+            <EarningsSection />
+          </Route>
+          <Route path="/saved">
+            <SavedPage onEdit={editPost} onNewPost={newPost} />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage profile={profile} onSave={saveProfile} />
+          </Route>
           <Route component={NotFound} />
         </Switch>
       </RoutedErrorBoundary>
