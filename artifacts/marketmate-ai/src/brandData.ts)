@@ -1,0 +1,32 @@
+export interface BrandInspiration {
+  name: string;
+  countryCode: string;
+  industry: string;
+  tagline?: string;
+}
+
+export const BRANDS_DATA: BrandInspiration[] = [
+  // Luxembourg
+  { name: 'ArcelorMittal', countryCode: 'LU', industry: 'Steel & Mining' },
+  { name: 'RTL Group', countryCode: 'LU', industry: 'Media & Entertainment' },
+  { name: 'SES', countryCode: 'LU', industry: 'Telecommunications' },
+  { name: 'BGL BNP Paribas', countryCode: 'LU', industry: 'Banking' },
+  
+  // USA
+  { name: 'Apple', countryCode: 'US', industry: 'Technology' },
+  { name: 'Microsoft', countryCode: 'US', industry: 'Technology' },
+  { name: 'Amazon', countryCode: 'US', industry: 'E-commerce' },
+  { name: 'Tesla', countryCode: 'US', industry: 'Automotive' },
+  
+  // UK
+  { name: 'HSBC', countryCode: 'GB', industry: 'Banking' },
+  { name: 'Shell', countryCode: 'GB', industry: 'Energy' },
+  { name: 'Unilever', countryCode: 'GB', industry: 'Consumer Goods' },
+  { name: 'BP', countryCode: 'GB', industry: 'Energy' },
+
+  // Switzerland
+  { name: 'Nestlé', countryCode: 'CH', industry: 'Food & Beverage' },
+  { name: 'Roche', countryCode: 'CH', industry: 'Healthcare' },
+  { name: 'Novartis', countryCode: 'CH', industry: 'Pharmaceuticals' },
+  { name: 'UBS', countryCode: 'CH', industry: 'Banking' }
+];

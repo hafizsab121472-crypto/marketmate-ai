@@ -1,0 +1,48 @@
+export interface VideoScript {
+  hook: string;
+  scenes: Array<{ timestamp: string; action: string; voiceover: string; visual: string }>;
+  cta: string;
+  caption: string;
+  hashtags: string[];
+}
+
+export interface VideoProject {
+  id: string;
+  title: string;
+  topic: string;
+  platform: 'Instagram Reels' | 'TikTok' | 'YouTube Shorts' | 'Facebook Reels' | 'LinkedIn Video';
+  country: string;
+  language: string;
+  duration: number;
+  aspectRatio: '9:16' | '1:1' | '16:9';
+  style: string;
+  script: VideoScript;
+  status: 'Draft' | 'Ready' | 'Generating' | 'Completed' | 'Failed';
+  createdAt: string;
+  updatedAt: string;
+}
+
+export async function submitVideoRender(project: VideoProject): Promise<{ success: boolean; statusMessage: string }> {
+  const apiKey = process.env.VIDEO_PROVIDER_API_KEY;
+
+  if (!apiKey) {
+    return {
+      success: false,
+      statusMessage: 'Video generation provider is not connected yet. Script, storyboard, and project details have been safely saved.'
+    };
+  }
+
+  try {
+    const response = await fetch('/api/video/render', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(project)
+    });
+    return await response.json();
+  } catch (error) {
+    return {
+      success: false,
+      statusMessage: 'Failed to communicate with video generation provider API.'
+    };
+  }
+}

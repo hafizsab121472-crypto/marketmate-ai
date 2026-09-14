@@ -1,0 +1,104 @@
+export interface LanguageOption {
+  code: string;
+  name: string;
+  type: 'official' | 'national' | 'regional' | 'common';
+}
+
+export interface CountryData {
+  code: string;
+  name: string;
+  flag: string;
+  region: string;
+  currency: { code: string; symbol: string; name: string };
+  timezones: string[];
+  languages: LanguageOption[];
+  defaultLanguage: string;
+}
+
+export const COUNTRIES_DATA: Record<string, CountryData> = {
+  GLOBAL: {
+    code: 'GLOBAL',
+    name: 'Global / Worldwide',
+    flag: '🌐',
+    region: 'Worldwide',
+    currency: { code: 'USD', symbol: '$', name: 'US Dollar' },
+    timezones: ['UTC'],
+    languages: [{ code: 'en', name: 'English', type: 'common' }],
+    defaultLanguage: 'en'
+  },
+  LU: {
+    code: 'LU',
+    name: 'Luxembourg',
+    flag: '🇱🇺',
+    region: 'Europe',
+    currency: { code: 'EUR', symbol: '€', name: 'Euro' },
+    timezones: ['Europe/Luxembourg'],
+    languages: [
+      { code: 'lb', name: 'Luxembourgish', type: 'national' },
+      { code: 'fr', name: 'French', type: 'official' },
+      { code: 'de', name: 'German', type: 'official' },
+      { code: 'en', name: 'English', type: 'common' }
+    ],
+    defaultLanguage: 'fr'
+  },
+  US: {
+    code: 'US',
+    name: 'United States',
+    flag: '🇺🇸',
+    region: 'North America',
+    currency: { code: 'USD', symbol: '$', name: 'US Dollar' },
+    timezones: ['America/New_York', 'America/Chicago', 'America/Los_Angeles'],
+    languages: [
+      { code: 'en', name: 'English', type: 'national' },
+      { code: 'es', name: 'Spanish', type: 'common' }
+    ],
+    defaultLanguage: 'en'
+  },
+  GB: {
+    code: 'GB',
+    name: 'United Kingdom',
+    flag: '🇬🇧',
+    region: 'Europe',
+    currency: { code: 'GBP', symbol: '£', name: 'British Pound' },
+    timezones: ['Europe/London'],
+    languages: [
+      { code: 'en', name: 'English', type: 'official' },
+      { code: 'cy', name: 'Welsh', type: 'regional' },
+      { code: 'gd', name: 'Scottish Gaelic', type: 'regional' },
+      { code: 'ga', name: 'Irish', type: 'regional' }
+    ],
+    defaultLanguage: 'en'
+  },
+  CH: {
+    code: 'CH',
+    name: 'Switzerland',
+    flag: '🇨🇭',
+    region: 'Europe',
+    currency: { code: 'CHF', symbol: 'CHF', name: 'Swiss Franc' },
+    timezones: ['Europe/Zurich'],
+    languages: [
+      { code: 'de', name: 'German', type: 'official' },
+      { code: 'fr', name: 'French', type: 'official' },
+      { code: 'it', name: 'Italian', type: 'official' },
+      { code: 'rm', name: 'Romansh', type: 'official' }
+    ],
+    defaultLanguage: 'de'
+  },
+  ZA: {
+    code: 'ZA',
+    name: 'South Africa',
+    flag: '🇿🇦',
+    region: 'Africa',
+    currency: { code: 'ZAR', symbol: 'R', name: 'South African Rand' },
+    timezones: ['Africa/Johannesburg'],
+    languages: [
+      { code: 'en', name: 'English', type: 'official' },
+      { code: 'af', name: 'Afrikaans', type: 'official' },
+      { code: 'zu', name: 'isiZulu', type: 'official' },
+      { code: 'xh', name: 'isiXhosa', type: 'official' },
+      { code: 'st', name: 'Sesotho', type: 'official' },
+      { code: 'tn', name: 'Setswana', type: 'official' }
+    ],
+    defaultLanguage: 'en'
+  }
+};
