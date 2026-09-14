@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force Dark Theme Globally */
-html, body, #root {
-  background-color: #020617 !important;
-  color: #f8fafc !important;
+/* Smooth font rendering and base styling */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
   min-height: 100vh;
 }
-
-div, main, nav, section, header, card {
-  border-color: #1e293b !important;
-}
-
